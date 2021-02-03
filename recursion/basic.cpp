@@ -1,21 +1,4 @@
 #include <iostream>
-/*
-6! = 6*5!
-  5! = 5*4!
-  4! = 4*6
-  3! = 3*2
-  2! = 2*1
-  1! = 1 *1
-  0! = 1
-  fact(n) = {  1 if n = 0
-               n * (n-1)! otherwise
-Things to look for in a recursive solution:
-1. Base case <-- when you just know the answer without recurring
-2. reduction <-- the recursive call that will eventually get to the base case
-Things to consider
-1. Try small examples by hand
-2. look for self similarity - smaller simpler problems 
-*/
 
 int fact(int n){
   if (n == 0){
@@ -24,12 +7,6 @@ int fact(int n){
     return n * fact(n-1);
   }
 }
-
-/*
- *
- 1 1 2 3 5 8 13 21 34
- the next fib number is the sum of the previous two fib numbers
-*/
 
 int fib(int n){
 
@@ -52,22 +29,30 @@ int fib_iter(int n){
     return three;
 }
 
+int stepPerms(int n){
+  if(n < 1){
+    return 0;
+  }
+  if(n == 1){
+    return 1;
+  }
+  if(n == 2){
+    return 2;
+  }
+  if(n == 3){
+    return 4;
+  }
+  return stepPerms(n-1) + stepPerms(n-2) + stepPerms(n-3);
+}
+
 int main()
 {
-
-  // int i;
-
-  // for (i=0; i < 10 ; i++){
-  //   std::cout << i << "! = " << fact(i) << "\n";
-  //   }
-
-  //   for (i=0; i < 10 ; i++){
-  //   std::cout << fib(i) << ", ";
-    
-  //   }
-  //   std::cout << "\n";
   for(int i = 0; i <= 10; i++){
     std::cout << i << ":" << fib_iter(i) << "\n";
+  }
+  std::cout << "StepPerms\n";
+  for(int i = 1; i <= 10; i++){
+    std::cout << i << ":" << stepPerms(i) << "\n";
   }
   return 0;
 }
