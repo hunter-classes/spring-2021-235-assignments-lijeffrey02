@@ -1,9 +1,9 @@
-objects - queue.o
+main: main.cpp queue.o
+	g++ -o main main.cpp queue.cpp queue.h
 
-main: main.cpp $(objects)
-	g++ -o main main.cpp $(objects)
+main.o: main.cpp queue.o
 
-queue.o: queue.cpp queue.hpp
+queue.o: queue.cpp queue.h
 
 clean:
 	rm -f *.o
