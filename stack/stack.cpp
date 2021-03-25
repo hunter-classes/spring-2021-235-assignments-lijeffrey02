@@ -1,35 +1,30 @@
-#include <stack.hpp>
+#include "stack.h"
+Stack::Stack(){
+	size = 0;
+}
 
-bool stack::empty(){
+Stack::~Stack(){
+	while(size > 0){
+		pop();
+	}
+}
+
+bool Stack::empty(){
 	return size == 0;
 }
 
-int size(){
-	return size;
-}
-
-int stack::top(){
+int Stack::top(){
 	return stack[size-1];
 }
 
-void stack::push(int input){
-	stack.pushback(input);
+void Stack::push(int input){
+	stack.push_back(input);
 	size++;
 }
 
-bool stack::pop(){
-	if(size == 0){
-		return false;
+void Stack::pop(){
+	if(size != 0){
+		stack.pop_back();
+		size--;
 	}
-	stack.pop_back();
-	size--;
-	return true;
-}
-
-std::string stack::toString(){
-	std::string ans = "[";
-	for(int i = 0; i < size; i++){
-		ans += stack[i] + ", ";
-	}
-	return ans + "]";
 }

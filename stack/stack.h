@@ -10,7 +10,6 @@ class Stack{
 		void push(int);
 		void pop();
 		int top();
-		std::string toString();
 	private:
 		std::vector<int> stack;
 		int size;
