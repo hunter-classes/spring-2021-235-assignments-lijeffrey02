@@ -1,7 +1,9 @@
-main: main.cpp stack.o
-	g++ -o main main.cpp stack.o
+main: main.o stack.o
+	g++ -o main main.cpp stack.cpp stack.h
 
-stack.o: stack.cpp stack.hpp
+main.o: main.cpp stack.o
+
+stack.o: stack.cpp stack.h
 
 clean:
 	rm -f *.o
