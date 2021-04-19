@@ -10,4 +10,5 @@ class BSTree{
         std::string get_debug_string();
         void insert(int data);
         void setup();
+        int search(int value);
 };

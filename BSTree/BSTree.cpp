@@ -27,6 +27,23 @@ std::string BSTree::get_debug_string(){
     return gds_helper(root);
 }
 
+int BSTree::search(int value){
+    Node *t = root;
+    while(t != nullptr){
+        if(t->getData() == value){
+            return value;
+        }
+        else if(t->getData() > value){
+            t = t->getLeft();
+        }
+        else if(t->getData() < value){
+            t = t->getRight();
+        }
+    }
+    throw -1;
+    return 0;
+}
+
 void BSTree::setup(){
     Node *n = new Node(10);
     root = n;
