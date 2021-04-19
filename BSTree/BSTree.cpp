@@ -9,11 +9,19 @@ void BSTree::insert(int data){
 
 }
 
+std::string gds_helper(Node *n){
+    if (n == nullptr){
+        return "";
+    }
+    return gds_helper(n->getLeft()) + " " + std::to_string(n->getData()) + " " + gds_helper(n->getRight());
+}
+
 std::string BSTree::get_debug_string(){
     if(root == nullptr){
         return "";
     }
-    return std::to_string(root->getLeft()->getData()) + " " + std::to_string(root->getData()) + " " + std::to_string(root->getRight()->getData());
+    // return std::to_string(root->getLeft()->getData()) + " " + std::to_string(root->getData()) + " " + std::to_string(root->getRight()->getData());
+    return gds_helper(root);
 }
 
 void BSTree::setup(){
@@ -23,5 +31,6 @@ void BSTree::setup(){
     root->setLeft(n);
     n = new Node(30);
     root->setRight(n);
+    n = new Node(40);
     root->getLeft()->setLeft(n);
 }
