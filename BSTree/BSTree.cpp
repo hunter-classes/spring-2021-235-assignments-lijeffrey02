@@ -39,8 +39,8 @@ int BSTree::search(int value){
         else if(t->getData() < value){
             t = t->getRight();
         }
+        else throw -1;
     }
-    throw -1;
     return 0;
 }
 

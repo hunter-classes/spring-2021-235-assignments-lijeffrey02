@@ -15,5 +15,12 @@ int main(){
     BSTree *t = new BSTree();
     t->setup();
     std::cout << t->get_debug_string() << "\n";
+    try{
+        int x = t->search(0);
+        std::cout << "Value Found";
+    }
+    catch (int e){
+        std::cout << "Value not Found";
+    }
     return 0;
 }
