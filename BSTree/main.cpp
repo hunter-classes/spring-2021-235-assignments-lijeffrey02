@@ -15,12 +15,18 @@ int main(){
     BSTree *t = new BSTree();
     t->setup();
     std::cout << t->get_debug_string() << "\n";
+    
+    int search = 11;
+    std::cout <<"Searching for value: " + std::to_string(search) + "\n";
     try{
-        int x = t->search(0);
-        std::cout << "Value Found";
+        int x = t->search(search);
+        std::cout << "Value " + std::to_string(x) + + " Found\n";
     }
     catch (int e){
-        std::cout << "Value not Found";
+        if(e == -1){
+            std::cout << "Tree Empty\n";
+        }
+        else std::cout << "Value " + std::to_string(search) + " not Found\n";
     }
     return 0;
 }

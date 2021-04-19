@@ -27,19 +27,47 @@ std::string BSTree::get_debug_string(){
     return gds_helper(root);
 }
 
+// Node *searchHelp(Node *n, int value){
+//     int v = n->getData();
+//     if(v == value){
+//         return n;
+//     }
+//     else if(v > value){
+//         searchHelp(n->getLeft(),value);
+//     }
+//     else if(v < value){
+//         searchHelp(n->getRight(),value);
+//     }
+//     else return nullptr;
+// }
+
 int BSTree::search(int value){
     Node *t = root;
+    if(t == nullptr){
+        throw -1;
+        return 0;
+    }
+    // if(searchHelp(t,value)->getData() == value){
+    //     return value;
+    // }
+    // throw -2;
+    // return 0;
     while(t != nullptr){
         if(t->getData() == value){
             return value;
         }
         else if(t->getData() > value){
-            t = t->getLeft();
+            if(t->getLeft() != nullptr){
+                t = t->getLeft();
+            }
+            else throw -2;
         }
         else if(t->getData() < value){
-            t = t->getRight();
+            if(t->getRight() != nullptr){
+                t = t->getRight();
+            }
+            else throw -2;
         }
-        else throw -1;
     }
     return 0;
 }
