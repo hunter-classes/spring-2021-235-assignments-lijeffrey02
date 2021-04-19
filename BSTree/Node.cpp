@@ -22,11 +22,11 @@ int Node::getData(){
     return data;
 }
 
-int Node::getLeft(){
+Node *Node::getLeft(){
     return left;
 }
 
-int Node::getRight(){
+Node *Node::getRight(){
     return right;
 }
 
