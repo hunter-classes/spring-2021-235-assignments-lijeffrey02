@@ -13,7 +13,10 @@ std::string gds_helper(Node *n){
     if (n == nullptr){
         return "";
     }
-    return  std::to_string(n->getData()) + "\n" + gds_helper(n->getLeft()) + "\t" +  gds_helper(n->getRight()) + "\n";
+    std::string a = gds_helper(n->getLeft());
+    std::string b = std::to_string(n->getData());
+    std::string c = gds_helper(n->getRight());
+    return a + "  [" + b + "]  " + c;
 }
 
 std::string BSTree::get_debug_string(){
@@ -27,10 +30,13 @@ std::string BSTree::get_debug_string(){
 void BSTree::setup(){
     Node *n = new Node(10);
     root = n;
-    n = new Node(20);
+    n = new Node(5);
     root->setLeft(n);
-    n = new Node(30);
+    n = new Node(15);
     root->setRight(n);
-    n = new Node(40);
+    n = new Node(2);
     root->getLeft()->setLeft(n);
+    root->getLeft()->setRight(new Node(8));
+    root->getRight()->setLeft(new Node(13));
+    root->getRight()->setRight(new Node(17));
 }
