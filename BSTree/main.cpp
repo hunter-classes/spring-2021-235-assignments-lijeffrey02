@@ -8,8 +8,8 @@ int main(){
     n->setLeft(n2);
     n2 = new Node(40);
     n->setRight(n2);
-    std::cout << n->getLeft()->getData() << "\n";
-    std::cout << n->getRight()->getData() << "\n";
+    // std::cout << n->getLeft()->getData() << "\n";
+    // std::cout << n->getRight()->getData() << "\n";
 
     BSTree *t = new BSTree();
     t->setup();
