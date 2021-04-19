@@ -10,5 +10,9 @@ int main(){
     n->setRight(n2);
     std::cout << n->getLeft()->getData() << "\n";
     std::cout << n->getRight()->getData() << "\n";
+
+    BSTree *t = new BSTree();
+    t->setup();
+    std::cout << t->get_debug_string() << "\n";
     return 0;
 }
