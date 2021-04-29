@@ -6,7 +6,31 @@ BSTree::BSTree(){
 }
 
 void BSTree::insert(int data){
+    Node *n = new Node(data);
+    if(root == nullptr){
+        root = n;
+        return;
+    }
 
+    Node *t = root;
+    Node *t2;
+
+    while(t!= nullptr){
+        t2 = t;
+        if(t->getData() < data){
+            t = t->getRight();
+        }
+        else{
+            t = t->getLeft();
+        }
+    }
+
+    if(data < t2->getData()){
+        t = t->getRight();
+    }
+    else{
+        t = t->getLeft();
+    }
 }
 
 std::string gds_helper(Node *n){
@@ -85,3 +109,13 @@ void BSTree::setup(){
     root->getRight()->setLeft(new Node(13));
     root->getRight()->setRight(new Node(17));
 }
+
+void BSTree::del(){
+     
+}
+
+// Delete
+// count the number of nodes in the tree
+// count the number of leaves
+// the sum of the nodes at a given level
+// The height/depth of the tree
