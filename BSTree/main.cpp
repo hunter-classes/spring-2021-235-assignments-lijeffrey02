@@ -14,13 +14,13 @@ int main(){
     std::cout << "Binary Search Tree\n";
     BSTree *t = new BSTree();
     t->setup();
+
     std::cout << t->get_debug_string() << "\n";
-    
-    int search = 11;
+
+    int search = 13;
     std::cout <<"Searching for value: " + std::to_string(search) + "\n";
     try{
-        int x = t->search(search);
-        std::cout << "Value " + std::to_string(x) + + " Found\n";
+        std::cout << "Value " + std::to_string(t->search(search)) + " Found\n";
     }
     catch (int e){
         if(e == -1){
@@ -28,5 +28,21 @@ int main(){
         }
         else std::cout << "Value " + std::to_string(search) + " not Found\n";
     }
+    search = 25;
+    std::cout <<"Searching for value: " + std::to_string(search) + "\n";
+    try{
+        std::cout << "Value " + std::to_string(t->search(search)) + " Found\n";
+    }
+    catch (int e){
+        if(e == -1){
+            std::cout << "Tree Empty\n";
+        }
+        else std::cout << "Value " + std::to_string(search) + " not Found\n";
+    }
+
+    std::cout << t->totalNodes() << " Total Nodes\n";
+    std::cout << t->totalLeaves() << " Total Leaves\n";
+    std::cout << t->sumNodes() << " Sum\n";
+    std::cout << t->depth() << " Depth\n";
     return 0;
 }
