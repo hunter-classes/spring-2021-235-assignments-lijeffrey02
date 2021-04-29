@@ -45,12 +45,11 @@ int main(){
     std::cout << t->sumNodes() << " Sum\n";
     std::cout << t->depth() << " Depth\n";
     try{
-        t->del(49);
+        t->del(80);
     }
     catch (int e){
         std::cout << "Value not Found\n";
     }
-    
     std::cout << t->get_debug_string() << "\n";
     return 0;
 }

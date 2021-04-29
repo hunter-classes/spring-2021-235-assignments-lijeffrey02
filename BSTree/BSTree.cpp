@@ -116,7 +116,7 @@ void delHelp(int data, Node* prev, Node* cur){
         throw -1;
         return;
     }
-    if(data > cur->getData()){
+    else if(data > cur->getData()){
         delHelp(data, cur, cur->getRight());
         return;
     }
@@ -124,46 +124,44 @@ void delHelp(int data, Node* prev, Node* cur){
         delHelp(data, cur, cur->getLeft());
         return;
     }
-    // //cur->getData() == data
-    // if(isLeaf(cur)){//if you are deleting a leaf
-    //     if(prev->getLeft()->getData() == cur->getData()){
-    //         prev->setRight(nullptr);
-    //     }
-    //     else{
-    //         prev->setLeft(nullptr);
-    //     }
-    //     delete cur;
-    //     return;
-    // }
-    // else if(has2(cur)){//if has 2 children
-    //     int n = delHelp2(data,prev);
-    //     delHelp(n,cur,cur);
-    //     cur->setData(n);
-    //     return;
-    // }
-    // else if(hasRight(cur)){//only right child
-    //     if(prev->getLeft() == cur){
-    //         prev->setRight(cur->getRight());
-    //     }
-    //     else{
-    //         prev->setLeft(cur->getLeft());
-    //     }
-    //     cur = nullptr;
-    //     delete cur;
-    //     return;
-    // }
-    // else if(hasLeft(cur)){//only left child
-    //     if(prev->getLeft() == cur){
-    //         prev->setRight(cur->getLeft());
-    //     }
-    //     else{
-    //         prev->setLeft(cur->getRight());
-    //     }
-    //     delete cur;
-    //     return;
-    // }
+    // std::cout << prev->getData() << "\n";// test for cur node
+    // std::cout << cur->getData() << "\n";// test for cur node
+    //cur->getData() == data
+    if(isLeaf(cur)){//if you are deleting a leaf
+        if(prev->getLeft() == cur){
+            prev->setRight(nullptr);
+        }
+        else{
+            prev->setLeft(nullptr);
+        }
+        delete cur;
+        return;
+    }
+     if (hasLeft(cur)){
+            if (prev->getLeft() == cur){
+                prev->setLeft(cur->getLeft());
+            }
+            else{
+                prev->setRight(cur->getLeft());
+            }
+            delete cur;
+        }
+        else if (hasRight(cur)){
+            if (prev->getLeft() == cur){
+                prev->setLeft(cur->getRight());
+            }
+            else{
+                prev->setRight(cur->getRight());
+            }
+            delete cur;
+        }
+    else if(has2(cur)){//if has 2 children
+        int n = delHelp2(data,prev);
+        delHelp(n,cur,cur);
+        cur->setData(n);
+        return;
+    }
     
-
 }
 
 void BSTree::del(int data){

@@ -1,7 +1,3 @@
-run:
-	make main
-	./main
-
 main: main.o Node.o BSTree.o
 	g++ -o main main.o Node.o BSTree.o
 
