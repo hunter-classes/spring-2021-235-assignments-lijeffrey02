@@ -12,12 +12,10 @@ class BSTree{
         void insert(int data);
         void setup();
         int search(int value);
+        void del(int);
         int totalNodes();
         int totalLeaves();
-        
         int sumNodes();
         int depth();
-
-        void del(int);
 };
 

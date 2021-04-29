@@ -14,7 +14,7 @@ bool hasRight(Node* cur){
 }
 
 bool isLeaf(Node* cur){
-    return !hasLeft() && !hasRight();
+    return !hasLeft(cur) && !hasRight(cur);
 }
 
 bool has2(Node* cur){
@@ -99,59 +99,70 @@ void BSTree::setup(){
     insert(100);
     insert(3);
 }
-
-Node* delHelp2(int data, Node* cur, Node* prev){
-    if(isLeaf(cur){
-
+int delHelp2(bool left, Node* cur){
+    if(isLeaf(cur)){
+        return cur->getData();
     }
-    if(hasLeft(cur)){
-        return delHelp2(data,cur->getLeft(),cur);
+    if(left){
+        return delHelp2(true,cur->getRight());
     }
-    if(hasRight(cur)){//has right child
-        return delHelp2(data,cur->getLeft(),cur);
+    else{
+        return delHelp2(false,cur->getLeft());
     }
-    return nullptr;
 }
 
 void delHelp(int data, Node* prev, Node* cur){
     if(cur == nullptr){//if data is not found
+        throw -1;
         return;
     }
     if(data > cur->getData()){
-        return delHelp(data, cur, cur->getRight());
+        delHelp(data, cur, cur->getRight());
+        return;
     }
     else if(data < cur->getData()){
-        return delHelp(data, cur, cur->getLeft());
+        delHelp(data, cur, cur->getLeft());
+        return;
     }
-    //cur->getData() == data
-    if(cur->getLeft() == nullptr && cur->getRight() == nullptr){//if you are deleting a leaf
-        if(prev->getLeft() == cur){
-            prev->setRight(nullptr);
-        }
-        else{
-            prev->setLeft(nullptr);
-        }
-    }
-    else if(has2(cur)){//if has 2 children
-        Node* n = delHelp2(data,prev,cur);
-    }
-    else if(hasRight(cur)){//only right child
-        if(prev->getLeft() == cur){
-            prev->setRight(cur->getRight());
-        }
-        else{
-            prev->setLeft(cur->getLeft());
-        }
-    }
-    else if(hasLeft(cur)){//only left child
-        if(prev->getLeft() == cur){
-            prev->setRight(cur->getLeft());
-        }
-        else{
-            prev->setLeft(cur->getRight());
-        }
-    }
-    delete cur;
+    // //cur->getData() == data
+    // if(isLeaf(cur)){//if you are deleting a leaf
+    //     if(prev->getLeft()->getData() == cur->getData()){
+    //         prev->setRight(nullptr);
+    //     }
+    //     else{
+    //         prev->setLeft(nullptr);
+    //     }
+    //     delete cur;
+    //     return;
+    // }
+    // else if(has2(cur)){//if has 2 children
+    //     int n = delHelp2(data,prev);
+    //     delHelp(n,cur,cur);
+    //     cur->setData(n);
+    //     return;
+    // }
+    // else if(hasRight(cur)){//only right child
+    //     if(prev->getLeft() == cur){
+    //         prev->setRight(cur->getRight());
+    //     }
+    //     else{
+    //         prev->setLeft(cur->getLeft());
+    //     }
+    //     cur = nullptr;
+    //     delete cur;
+    //     return;
+    // }
+    // else if(hasLeft(cur)){//only left child
+    //     if(prev->getLeft() == cur){
+    //         prev->setRight(cur->getLeft());
+    //     }
+    //     else{
+    //         prev->setLeft(cur->getRight());
+    //     }
+    //     delete cur;
+    //     return;
+    // }
+    
 
 }
 
